@@ -64,6 +64,8 @@
 		03E173592C1E84EF0071D153 /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173582C1E84EF0071D153 /* JSONNull.swift */; };
 		03E1735B2C1E857F0071D153 /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1735A2C1E857F0071D153 /* JSONAny.swift */; };
 		03E1735D2C1E85BF0071D153 /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1735C2C1E85BF0071D153 /* JSONCodingKey.swift */; };
+		03E173822C1F1ED00071D153 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173812C1F1ED00071D153 /* NavigationManager.swift */; };
+		03E173842C1F1EE40071D153 /* NavigationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173832C1F1EE40071D153 /* NavigationMode.swift */; };
 		03FFC8DB2C1CDD06000F089F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FFC8DA2C1CDD06000F089F /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		03E173582C1E84EF0071D153 /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		03E1735A2C1E857F0071D153 /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
 		03E1735C2C1E85BF0071D153 /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
+		03E173812C1F1ED00071D153 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		03E173832C1F1EE40071D153 /* NavigationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMode.swift; sourceTree = "<group>"; };
 		03FFC8DA2C1CDD06000F089F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -380,6 +384,7 @@
 		035CB8F22C1CC000005FCE1C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				03E173802C1F1EBA0071D153 /* NavigationManager */,
 				035CB8F52C1CC03D005FCE1C /* ProductsFetchUseCase.swift */,
 			);
 			path = UseCases;
@@ -405,6 +410,15 @@
 				03E1733E2C1E826F0071D153 /* Val.swift */,
 			);
 			path = enums;
+			sourceTree = "<group>";
+		};
+		03E173802C1F1EBA0071D153 /* NavigationManager */ = {
+			isa = PBXGroup;
+			children = (
+				03E173812C1F1ED00071D153 /* NavigationManager.swift */,
+				03E173832C1F1EE40071D153 /* NavigationMode.swift */,
+			);
+			path = NavigationManager;
 			sourceTree = "<group>";
 		};
 		03FFC8D92C1CDCE1000F089F /* Assets */ = {
@@ -578,12 +592,14 @@
 				035CB8F82C1CC3ED005FCE1C /* FetchError.swift in Sources */,
 				035CB8E82C1CBCCA005FCE1C /* ProductDetailView.swift in Sources */,
 				03E1735D2C1E85BF0071D153 /* JSONCodingKey.swift in Sources */,
+				03E173822C1F1ED00071D153 /* NavigationManager.swift in Sources */,
 				03E173202C1E7DC60071D153 /* Cat.swift in Sources */,
 				03E173552C1E84960071D153 /* VariationsDatum.swift in Sources */,
 				03E1733D2C1E82500071D153 /* Unit.swift in Sources */,
 				03E1734D2C1E842A0071D153 /* LogisticType.swift in Sources */,
 				03E173282C1E806B0071D153 /* PDPTracking.swift in Sources */,
 				03E173242C1E7FC70071D153 /* TypeEnum.swift in Sources */,
+				03E173842C1F1EE40071D153 /* NavigationMode.swift in Sources */,
 				035CB8C12C1CB2D6005FCE1C /* Shipping.swift in Sources */,
 				0326EACC2C1CAA4E00421450 /* ChallengeiOSMeliApp.swift in Sources */,
 				035CB8C52C1CB322005FCE1C /* Attr.swift in Sources */,
