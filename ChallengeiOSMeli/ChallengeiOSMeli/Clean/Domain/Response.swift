@@ -8,15 +8,26 @@
 import Foundation
 
 struct Response: Codable {
-    let siteId: String
+    let siteID: SiteID
     let countryDefaultTimeZone: String
     let query: String
     let paging: Paging
     let results: [Product]
-        
+    let sort: Sort
+    let availableSorts: [Sort]
+    let filters: [Filt]
+    let availableFilters: [AvailableFilter]
+    let pdpTracking: PDPTracking
+    let userContext: JSONNull?
+
     enum CodingKeys: String, CodingKey {
-        case siteId = "site_id"
+        case siteID = "site_id"
         case countryDefaultTimeZone = "country_default_time_zone"
-        case query, paging, results
+        case query, paging, results, sort
+        case availableSorts = "available_sorts"
+        case filters
+        case availableFilters = "available_filters"
+        case pdpTracking = "pdp_tracking"
+        case userContext = "user_context"
     }
 }

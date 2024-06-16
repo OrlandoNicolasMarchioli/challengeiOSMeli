@@ -9,12 +9,11 @@ import Foundation
 
 struct Installments: Codable {
     let quantity: Int
-    let amount: Double
-    let rate: Int
-    let currencyId: String
-    
+    let amount, rate: Double
+    let currencyID: CurrencyID
+
     enum CodingKeys: String, CodingKey {
         case quantity, amount, rate
-        case currencyId = "currency_id"
+        case currencyID = "currency_id"
     }
 }

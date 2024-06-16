@@ -10,7 +10,7 @@ import Combine
 
 class AllProductsViewModel: ObservableObject{
     @Published var state: AllProductsState
-    static let defaultState = AllProductsState(products: [], errorMessage: "", message: "", hasError: false, noProductsFound: false)
+    static let defaultState = AllProductsState(products: [], errorMessage: "", message: "", hasError: false, noProductsFound: true)
     private let productsFetchUseCase: DefaultProductsFetchUseCase
     private var cancellables: Set<AnyCancellable> = []
     
@@ -28,7 +28,7 @@ class AllProductsViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self?.state = (self?.state.clone(productsFetched: [], withErrorMessage: error.localizedDescription, withMessage: "", withHasError: true))!
+                        self?.state = (self?.state.clone(productsFetched: [], withErrorMessage: error.localizedDescription, withMessage: "", withHasError: true, withNoProductsFound: true))!
                     }
                 }
             },

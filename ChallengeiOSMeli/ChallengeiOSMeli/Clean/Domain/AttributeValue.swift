@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Val: Codable {
+struct AttributeValue: Codable {
     let id: String?
     let name: String
-    let str: ValueStruct?
+    let valueStruct: Struct?
     let source: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name
-        case str = "struct"
+        case valueStruct = "struct"
         case source
     }
 }

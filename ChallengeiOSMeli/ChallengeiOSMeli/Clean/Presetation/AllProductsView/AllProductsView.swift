@@ -10,7 +10,7 @@ import SwiftUI
 struct AllProductsView: View {
     @ObservedObject var allProductsViewModel = AllProductsViewModel( productsFetchUseCase: DefaultProductsFetchUseCase(allProductsRepository: ProductsApiFetch(productsApi: ProductApi.getInstance())))
     
-    
+    @State var noProductFound = false
     let imageBaseURL: String = ProcessInfo.processInfo.environment["baseImageUrl"] ?? ""
     @State var filterName: String = ""
     
@@ -20,27 +20,26 @@ struct AllProductsView: View {
                 ZStack {
                     VStack(alignment: .center) {
                         VStack(alignment: .trailing){
-                            HStack(){
-                                Spacer()
-                                TextField("Search Movie: ", text: $filterName)
-                                    .foregroundColor(Color.white)
+                            HStack {
+                                TextField("Search products: ", text: $filterName)
+                                    .foregroundColor(Color.black)
                                     .frame(minWidth: 100)
                                     .padding(.leading)
                                 
-                                Image(systemName: "magnifyingglass")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(.red)
-                                    .bold()
-                                    .padding(.trailing)
+                                Button(action: {
+                                    allProductsViewModel.fetchProductsByName(productName:  filterName)
+                                }) {
+                                    Image(systemName: "magnifyingglass")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.yellow)
+                                        .bold()
+                                        .padding(.trailing)
+                                }
                             }
                         }
                         .frame(width: geometry.size.width)
-                        Text("Premieres")
-                            .foregroundColor(Color("MovieTitle"))
-                            .frame(height: 50)
-                            .font(.title)
-                            .bold()
+                        
                         if(!allProductsViewModel.state.noProductsFound
                         ){
                             ScrollView {
@@ -53,21 +52,31 @@ struct AllProductsView: View {
                                                                      ,
                                                                      getProductPrice: { item in item.originalPrice!}
                                                                      ,
-                                                getProductOriginalPrice: { item in item.price }
+                                                                     getProductOriginalPrice: { item in item.price }
                                                                      ,
                                                                      getAvailableQuantity: { item in item.availableQuantity },
-                                                onChipTapped: {
+                                                                     onChipTapped: {
                                             })
                                         }
                                     }
                                 }
                             }
                         }
-                        else{
+                        else if(allProductsViewModel.state.products.isEmpty && !allProductsViewModel.state.hasError){
+                            Spacer()
+                            EmptySearchView()
+                            Spacer()
+                        }
+                        else if (noProductFound){
                             Spacer()
                             NoProductFoundView()
                             Spacer()
                         }
+                            
+                    }
+                }.onReceive(self.allProductsViewModel.$state){state in
+                    if(state.noProductsFound){
+                        noProductFound = true
                     }
                 }
                 

@@ -35,19 +35,18 @@ class ProductApi: ProductsApiProtocol{
     }
     
     func getAllProducts(productName: String,completion: @escaping (Response?, Error?) -> Void) {
-        guard let urlRequest = absoluteURLFactory(host: baseUrl,
-                                                  path: "ites/MLA/search?q=",
-                                                   param: productName) else{
+        guard let urlRequest = URL(string: baseUrl + productName) else{
             print("Invalid Url")
             return
         }
+        print(urlRequest)
         
         performDataTask(urlRequest: urlRequest , completion: completion, decodingType: Response.self, extractResponse: extractProductsFromResponse(response: ))
 
     }
     
 
-    private func performDataTask<T: Decodable>(urlRequest: URLRequest, completion: @escaping (T?, Error?) -> Void, decodingType: T.Type, extractResponse: @escaping (T) -> Void) {
+    private func performDataTask<T: Decodable>(urlRequest: URL, completion: @escaping (T?, Error?) -> Void, decodingType: T.Type, extractResponse: @escaping (T) -> Void) {
          
         urlSession.dataTask(with: urlRequest) { data, _, error in
              guard let data = data, error == nil else {
@@ -74,14 +73,13 @@ class ProductApi: ProductsApiProtocol{
          }.resume()
      }
     
-    private func absoluteURLFactory(host: String, path: String, param: String) -> URLRequest?{
-      var hostUrl = URL(string: host)
-      hostUrl?.append(path: path)
-      var urlRequest = URLRequest(url: hostUrl ?? URL(fileURLWithPath: ""))
-      urlRequest.httpMethod = "GET"
-
-      return  urlRequest
-    }
+//    private func absoluteURLFactory(host: String, path: String, param: String) -> URLRequest?{
+//      var hostUrl = URL(string: "https://api.mercadolibre.com/sites/MLA/search?q=" + param)
+//      var urlRequest = URLRequest(url: hostUrl ?? URL(fileURLWithPath: ""))
+//      urlRequest.httpMethod = "GET"
+//        print(urlRequest.url ?? "")
+//      return  urlRequest
+//    }
     
     private func extractProductsFromResponse(response: Response) -> Void{
             self.products = response.results

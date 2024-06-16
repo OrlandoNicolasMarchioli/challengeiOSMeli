@@ -1,21 +1,21 @@
 //
-//  NoProductFoundView.swift
+//  EmptySearchView.swift
 //  ChallengeiOSMeli
 //
-//  Created by Nico on 14/06/2024.
+//  Created by Nico on 15/06/2024.
 //
 
 import SwiftUI
 
-struct NoProductFoundView: View {
+struct EmptySearchView: View {
     var body: some View {
         ZStack{
             VStack{
-                Image(systemName: "message")
+                Image(systemName: "magnifyingglass")
                     .resizable()
                     .frame(maxWidth: 200, maxHeight: 200)
                     .foregroundColor(.yellow)
-                Text("No products found")
+                Text("Search your product")
                     .foregroundColor(.yellow)
                     .bold()
             }
@@ -23,8 +23,6 @@ struct NoProductFoundView: View {
     }
 }
 
-struct NoProductFoundView_Previews: PreviewProvider {
-    static var previews: some View {
-        NoProductFoundView()
-    }
+#Preview {
+    EmptySearchView()
 }

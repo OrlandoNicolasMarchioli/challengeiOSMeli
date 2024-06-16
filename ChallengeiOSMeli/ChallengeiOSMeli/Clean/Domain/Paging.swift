@@ -8,14 +8,12 @@
 import Foundation
 
 struct Paging: Codable {
-    let total: Int
-    let primaryResults: Int
-    let offset: Int
-    let limit: Int
+    let total, primaryResults, offset, limit: Int
+
+        enum CodingKeys: String, CodingKey {
+            case total
+            case primaryResults = "primary_results"
+            case offset, limit
+        }
     
-    enum CodingKeys: String, CodingKey {
-        case total
-        case primaryResults = "primary_results"
-        case offset, limit
-    }
 }

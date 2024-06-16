@@ -14,7 +14,6 @@ struct ProductCell: View {
     var body: some View {
         HStack {
             ZStack {
-                // Fondo gris
                 Rectangle()
                     .fill(Color("grayTitle"))
                     .frame(maxWidth: 150, maxHeight: 200)
@@ -146,7 +145,7 @@ struct ProductCellChip<T>: View {
 
 struct ProductCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "https://www.mercadolibre.com.ar/motorola-moto-g54-5g-128-gb-verde-4-gb-ram/p/MLA29471800", productName: "Motorola", productPrice: Int(1200.3), productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
+        ProductCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "https://www.mercadolibre.com.ar/motorola-moto-g54-5g-128-gb-verde-4-gb-ram/p/MLA29471800", productName: "Motorola", productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
     }
 }
 
