@@ -56,7 +56,7 @@ struct AllProductsView: View {
                                         {
                                             ProductCellChip<Product>(item: product,
                                                                      getProductImageUrl: { item in item.thumbnail },
-                                                                     getProductName: { item in item.title }
+                                                                     getProductName: { item in item.title }, getFreeShipment: {item in item.shipping.freeShipping}
                                                                      ,
                                                                      getProductPrice: { item in item.originalPrice!}
                                                                      ,
