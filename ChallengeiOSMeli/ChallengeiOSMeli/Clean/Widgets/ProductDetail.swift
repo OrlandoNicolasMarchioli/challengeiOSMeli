@@ -1,96 +1,114 @@
-////
-////  ProductDetail.swift
-////  ChallengeiOSMeli
-////
-////  Created by Nico on 14/06/2024.
-////
 //
-//import Foundation
+//  ProductCell.swift
+//  ChallengeiOSMeli
 //
-//import SwiftUI
+//  Created by Nico on 14/06/2024.
 //
-//struct MovieDetail<T> {
-//    
-//    @State var movie: Movie
-//    
-//    init(movie: Movie) {
-//        self.movie = movie
-//    }
-//    
-//    var body: some View {
-//        HStack{
-//            
-//        }.padding(.bottom)
-//    }
-//    
-//}
-//
-//struct SingleMovieCellChip<T>: View {
-//    let item: T
-//    let getMovieImageUrl: ((T) -> String)
-//    let getMovieGenre: ((T) -> String)
-//    let getMovieDuration: ((T) -> String)
-//    let getMovieActors: ((T) -> String)
-//    let getMovieDirector: ((T) -> String)
-//    let onChipTapped: (() -> Void)
-//    let imageNotAvailable: Constants.NotAvailable = .notAvailable
-//    
-//    var body: some View {
-//        VStack {
-//            if getMovieImageUrl(item).contains(imageNotAvailable.rawValue){
-//                Image(systemName: "photo")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .cornerRadius(8)
-//                    .foregroundColor(.red)
-//            } else {
-//                AsyncImage(url: URL(string: convertToSecureURL(getMovieImageUrl(item)))) { phase in
-//                    switch phase {
-//                    case .empty:
-//                        ProgressView()
-//                            .progressViewStyle(CircularProgressViewStyle(tint: .red))
-//                            .scaleEffect(2.0, anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                    case .success(let image):
-//                        image
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(maxHeight: 700)
-//                            .cornerRadius(8)
-//                    case .failure:
-//                        SpinnerView()
-//                    @unknown default:
-//                        EmptyView()
-//                    }
-//                }
-//                .padding()
-//            }
-//            VStack(alignment: .leading) {
-//                HStack(alignment: .firstTextBaseline){
-//                    MovieInfoRowView(label: "Genre: ", value: getMovieGenre(item), labelColor: Color("GrayMovieTitle"), valueColor: Color("MovieTitle"))
-//                }
-//                HStack(alignment: .firstTextBaseline){
-//                    MovieInfoRowView(label: "Duration: ", value: getMovieDuration(item), labelColor: Color("GrayMovieTitle"), valueColor: Color("MovieTitle"))
-//                }
-//                HStack(alignment: .firstTextBaseline){
-//                    MovieInfoRowView(label: "Actors: ", value: getMovieActors(item), labelColor: Color("GrayMovieTitle"), valueColor: Color("MovieTitle"))
-//                }
-//                HStack(alignment: .firstTextBaseline){
-//                    MovieInfoRowView(label: "Director: ", value: getMovieDirector(item), labelColor: Color("GrayMovieTitle"), valueColor: Color("MovieTitle"))
-//                }
-//            }
-//            
-//        }
-//    }
-//}
-//
-//private func convertToSecureURL(_ urlString: String) -> String {
-//    var secureURLString = urlString
-//    if urlString.hasPrefix("http://") {
-//        secureURLString = "https://" + urlString.dropFirst(7)
-//    }
-//    return secureURLString
-//}
-//  
-//#Preview{
-//    SingleMovieCellChip<SelectedMovie>(item: SelectedMovie(image : "https://placekitten.com/200/300",genre: "Acction", runtime: "94 min", actors: "great kitty", director: "Stephen Hawking"), getMovieImageUrl: {item in return item.image}, getMovieGenre: {item in return item.genre}, getMovieDuration: {item in return item.runtime}, getMovieActors: {item in return item.actors}, getMovieDirector: {item in return item.director}, onChipTapped: {} )
-//}
+
+import Foundation
+import SwiftUI
+
+struct ProductDetail: View {
+    @State var product: Product
+    
+    var body: some View {
+        HStack{
+            
+        }
+    }
+}
+
+// Vista para mostrar una celda de producto con genéricos
+struct ProductDetailCellChip<T>: View {
+    let item: T
+    let getProductImageUrl: ((T) -> String)
+    let getProductName: ((T) -> String)
+    let getFreeShipment: ((T) -> Bool)
+    let getProductPrice: ((T) -> Int)
+    let getProductOriginalPrice: ((T) -> Int?)
+    let getAvailableQuantity: ((T) -> Int)
+    let onChipTapped: (() -> Void)
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            Text(getProductName(item))
+                .foregroundColor(Color.black)
+
+                .font(.title3)
+                .padding(.bottom, 10)
+            ZStack {
+                Rectangle()
+                    .fill(Color.white)
+                    .cornerRadius(8)
+                    .frame(maxWidth: .infinity, maxHeight: 400)
+                
+                AsyncImage(url: URL(string: convertToSecureURL(getProductImageUrl(item)))) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .yellow))
+                            .scaleEffect(2.0)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+
+                            .cornerRadius(8)
+                    case .failure:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 250)
+                            .cornerRadius(8)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+            }
+            .padding()
+            HStack {
+                
+                VStack(alignment: .leading) {
+
+                    if let originalPrice = getProductOriginalPrice(item) {
+                        Text("$ \(originalPrice)")
+                            .foregroundColor(Color("grayTitle"))
+                            .strikethrough()
+                            .font(.title3)
+                    }
+                    Text("$ \(getProductPrice(item))")
+                        .foregroundColor(Color.black)
+                        .bold()
+                        .font(.title)
+                        .padding(.bottom, 10)
+                    if (getFreeShipment(item)) {
+                        Text(ShipmentType.freeSHipment.rawValue)
+                            .foregroundColor(Color.green)
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    
+                }
+            }
+        }
+        .onTapGesture {
+            onChipTapped()
+        }
+        .padding()
+    }
+}
+
+private func convertToSecureURL(_ urlString: String) -> String {
+    var secureURLString = urlString
+    if urlString.hasPrefix("http://") {
+        secureURLString = "https://" + urlString.dropFirst(7)
+    }
+    return secureURLString
+}
+
+struct ProductDetailCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProductDetailCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
+    }
+}
+

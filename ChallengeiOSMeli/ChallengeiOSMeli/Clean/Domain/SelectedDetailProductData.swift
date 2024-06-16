@@ -1,16 +1,15 @@
 //
-//  SelectedProduct.swift
+//  SelectedDetailProductData.swift
 //  ChallengeiOSMeli
 //
-//  Created by Nico on 14/06/2024.
+//  Created by Nico on 16/06/2024.
 //
 
 import Foundation
 
-struct SelectedProductData{
+struct SelectedDetailProductData{
     let imageUrl: String
     let productName: String
-    let freeShipment: Bool
     let productPrice: Int
     let productOriginalPrice: Int
     let availableQuantity: Int
