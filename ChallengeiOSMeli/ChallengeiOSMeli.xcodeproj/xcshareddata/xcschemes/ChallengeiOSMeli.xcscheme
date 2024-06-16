@@ -76,7 +76,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "baseUrl"
-            value = "https://api.mercadolibre.com/sites/MLA/search?q="
+            value = "https://api.mercadolibre.com"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
