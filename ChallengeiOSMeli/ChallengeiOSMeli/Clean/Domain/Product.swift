@@ -8,40 +8,40 @@
 import Foundation
 
 struct Product: Codable, Identifiable {
-    let id, title: String
-    let condition: String
-    let thumbnailID: String
+    let id, title: String?
+    let condition: String?
+    let thumbnailID: String?
     let catalogProductID: String?
-    let listingTypeID: String
-    let permalink: String
-    let buyingMode: String
-    let siteID: String
-    let categoryID: String
-    let domainID: String
-    let thumbnail: String
+    let listingTypeID: String?
+    let permalink: String?
+    let buyingMode: String?
+    let siteID: String?
+    let categoryID: String?
+    let domainID: String?
+    let thumbnail: String?
     let currencyID: CurrencyID
-    let orderBackend: Int
-    let price: Int
+    let orderBackend: Int?
+    let price: Int?
     let originalPrice: Int?
     let salePrice: JSONNull?
-    let availableQuantity: Int
+    let availableQuantity: Int?
     let officialStoreID: Int?
     let officialStoreName: String?
-    let useThumbnailID, acceptsMercadopago: Bool
-    let shipping: Shipping
-    let stopTime: String
-    let seller: Seller
-    let attributes: [ResultAttribute]
-    let installments: Installments
+    let useThumbnailID, acceptsMercadopago: Bool?
+    let shipping: Shipping?
+    let stopTime: String?
+    let seller: Seller?
+    let attributes: [ResultAttribute]?
+    let installments: Installments?
     let winnerItemID: JSONNull?
-    let catalogListing: Bool
+    let catalogListing: Bool?
     let discounts: JSONNull?
-    let promotions: [JSONAny]
+    let promotions: [JSONAny]?
     let differentialPricing: DifferentialPricing?
     let inventoryID: String?
     let variationID: String?
     let variationFilters: [String]?
-    let variationsData: [String: VariationsDatum]?
+    let variationsData: [String: VariationsData]?
     
     enum CodingKeys: String, CodingKey {
         case id, title, condition

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct VariationsDatum: Codable {
+struct VariationsData: Codable {
     let thumbnail: String
     let ratio, name: String
     let picturesQty: Int
     let price: Double
     let inventoryID: String?
     let userProductID: String
-    let attributes: [VariationsDatumAttribute]
+    let attributes: [VariationsDataAttribute]
 
     enum CodingKeys: String, CodingKey {
         case thumbnail, ratio, name

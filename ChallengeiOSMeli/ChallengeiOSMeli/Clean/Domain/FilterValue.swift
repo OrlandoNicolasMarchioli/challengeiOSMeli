@@ -8,8 +8,8 @@
 import Foundation
 
 struct FilterValue: Codable {
-    let id, name: String
-    let pathFromRoot: [Sort]?
+    let id, name: String?
+    let pathFromRoot: [Sort]??
 
     enum CodingKeys: String, CodingKey {
         case id, name

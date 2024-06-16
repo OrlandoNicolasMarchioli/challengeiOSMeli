@@ -8,16 +8,16 @@
 import Foundation
 
 struct Response: Codable {
-    let siteID: String
-    let countryDefaultTimeZone: String
-    let query: String
-    let paging: Paging
+    let siteID: String?
+    let countryDefaultTimeZone: String?
+    let query: String?
+    let paging: Paging?
     let results: [Product]
-    let sort: Sort
-    let availableSorts: [Sort]
-    let filters: [Filt]
-    let availableFilters: [AvailableFilter]
-    let pdpTracking: PDPTracking
+    let sort: Sort?
+    let availableSorts: [Sort]?
+    let filters: [Filt]?
+    let availableFilters: [AvailableFilter]?
+    let pdpTracking: PDPTracking?
     let userContext: JSONNull?
 
     enum CodingKeys: String, CodingKey {

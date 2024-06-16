@@ -59,8 +59,8 @@
 		03E1734D2C1E842A0071D153 /* LogisticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1734C2C1E842A0071D153 /* LogisticType.swift */; };
 		03E173512C1E84570071D153 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173502C1E84570071D153 /* Tag.swift */; };
 		03E173532C1E84760071D153 /* SiteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173522C1E84760071D153 /* SiteID.swift */; };
-		03E173552C1E84960071D153 /* VariationsDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173542C1E84960071D153 /* VariationsDatum.swift */; };
-		03E173572C1E84CB0071D153 /* VariationsDatumAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173562C1E84CB0071D153 /* VariationsDatumAttribute.swift */; };
+		03E173552C1E84960071D153 /* VariationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173542C1E84960071D153 /* VariationsData.swift */; };
+		03E173572C1E84CB0071D153 /* VariationsDataAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173562C1E84CB0071D153 /* VariationsDataAttribute.swift */; };
 		03E173592C1E84EF0071D153 /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E173582C1E84EF0071D153 /* JSONNull.swift */; };
 		03E1735B2C1E857F0071D153 /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1735A2C1E857F0071D153 /* JSONAny.swift */; };
 		03E1735D2C1E85BF0071D153 /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E1735C2C1E85BF0071D153 /* JSONCodingKey.swift */; };
@@ -144,8 +144,8 @@
 		03E1734C2C1E842A0071D153 /* LogisticType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogisticType.swift; sourceTree = "<group>"; };
 		03E173502C1E84570071D153 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		03E173522C1E84760071D153 /* SiteID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteID.swift; sourceTree = "<group>"; };
-		03E173542C1E84960071D153 /* VariationsDatum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationsDatum.swift; sourceTree = "<group>"; };
-		03E173562C1E84CB0071D153 /* VariationsDatumAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationsDatumAttribute.swift; sourceTree = "<group>"; };
+		03E173542C1E84960071D153 /* VariationsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationsData.swift; sourceTree = "<group>"; };
+		03E173562C1E84CB0071D153 /* VariationsDataAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationsDataAttribute.swift; sourceTree = "<group>"; };
 		03E173582C1E84EF0071D153 /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		03E1735A2C1E857F0071D153 /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
 		03E1735C2C1E85BF0071D153 /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 				03E173392C1E82210071D153 /* Struct.swift */,
 				03E173172C1E7AE30071D153 /* Sort.swift */,
 				03E173192C1E7C790071D153 /* SortOption.swift */,
-				03E173542C1E84960071D153 /* VariationsDatum.swift */,
-				03E173562C1E84CB0071D153 /* VariationsDatumAttribute.swift */,
+				03E173542C1E84960071D153 /* VariationsData.swift */,
+				03E173562C1E84CB0071D153 /* VariationsDataAttribute.swift */,
 				035CB8C62C1CB33F005FCE1C /* ValueStruct.swift */,
 				03E173582C1E84EF0071D153 /* JSONNull.swift */,
 				03E1735A2C1E857F0071D153 /* JSONAny.swift */,
@@ -578,7 +578,7 @@
 				03E1735B2C1E857F0071D153 /* JSONAny.swift in Sources */,
 				03E173302C1E81690071D153 /* ResultAttribute.swift in Sources */,
 				035CB8C92C1CB3AE005FCE1C /* AttributeValue.swift in Sources */,
-				03E173572C1E84CB0071D153 /* VariationsDatumAttribute.swift in Sources */,
+				03E173572C1E84CB0071D153 /* VariationsDataAttribute.swift in Sources */,
 				035CB8E02C1CB998005FCE1C /* AllProductsState.swift in Sources */,
 				03E1733A2C1E82210071D153 /* Struct.swift in Sources */,
 				035CB8CB2C1CB439005FCE1C /* Installments.swift in Sources */,
@@ -602,7 +602,7 @@
 				03E1735D2C1E85BF0071D153 /* JSONCodingKey.swift in Sources */,
 				03E173822C1F1ED00071D153 /* NavigationManager.swift in Sources */,
 				03E173202C1E7DC60071D153 /* Cat.swift in Sources */,
-				03E173552C1E84960071D153 /* VariationsDatum.swift in Sources */,
+				03E173552C1E84960071D153 /* VariationsData.swift in Sources */,
 				03E1733D2C1E82500071D153 /* Unit.swift in Sources */,
 				03E1734D2C1E842A0071D153 /* LogisticType.swift in Sources */,
 				03E173282C1E806B0071D153 /* PDPTracking.swift in Sources */,

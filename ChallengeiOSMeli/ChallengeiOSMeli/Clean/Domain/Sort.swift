@@ -8,5 +8,5 @@
 import Foundation
 
 struct Sort: Codable {
-    let id, name: String
+    let id, name: String?
 }

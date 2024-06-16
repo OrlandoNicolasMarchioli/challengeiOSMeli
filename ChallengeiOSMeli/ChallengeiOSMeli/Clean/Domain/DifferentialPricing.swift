@@ -8,5 +8,5 @@
 import Foundation
 
 struct DifferentialPricing: Codable {
-    let id: Int
+    let id: Int?
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 struct PDPTracking: Codable {
-    let group: Bool
-    let productInfo: [ProductInfo]
+    let group: Bool?
+    let productInfo: [ProductInfo]?
 
     enum CodingKeys: String, CodingKey {
         case group

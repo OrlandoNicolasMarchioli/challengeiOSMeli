@@ -8,12 +8,12 @@
 import Foundation
 
 struct Shipping: Codable {
-    let storePickUp, freeShipping: Bool
-    let logisticType: LogisticType
-    let mode: String
-    let tags: [Tag]
+    let storePickUp, freeShipping: Bool?
+    let logisticType: LogisticType?
+    let mode: String?
+    let tags: [Tag]?
     let benefits, promise: JSONNull?
-    let shippingScore: Int
+    let shippingScore: Int?
 
     enum CodingKeys: String, CodingKey {
         case storePickUp = "store_pick_up"

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Filt: Codable {
-    let id, name: String
-    let type: String
-    let values: [FilterValue]
+    let id, name: String?
+    let type: String?
+    let values: [FilterValue]?
 }

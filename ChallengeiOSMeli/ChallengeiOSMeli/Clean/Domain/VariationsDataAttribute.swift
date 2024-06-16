@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct VariationsDatumAttribute: Codable {
-    let id: String
-    let name: String
-    let valueName: Val
-    let valueType: String
+struct VariationsDataAttribute: Codable {
+    let id: String?
+    let name: String?
+    let valueName: Val?
+    let valueType: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name

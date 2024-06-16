@@ -27,6 +27,7 @@ struct ProductDetailCellChip<T>: View {
     let getProductPrice: ((T) -> Int)
     let getProductOriginalPrice: ((T) -> Int?)
     let getAvailableQuantity: ((T) -> Int)
+    let getAttributes: ((T) -> [ResultAttribute])
     let onChipTapped: (() -> Void)
     
     var body: some View {
@@ -87,7 +88,15 @@ struct ProductDetailCellChip<T>: View {
                             .font(.subheadline)
                             .bold()
                     }
-                    
+                    Text("Caracteristicas del producto")
+                        .foregroundColor(Color.black)
+                        .font(.title3)
+                        .padding(.top, 10)
+                    ForEach(getAttributes(item), id: \.id) { attribute in
+                        Text("\(attribute.name): \(attribute.valueName)")
+                            .foregroundColor(Color.black)
+                            .font(.subheadline)
+                    }
                 }
             }
         }
@@ -108,7 +117,7 @@ private func convertToSecureURL(_ urlString: String) -> String {
 
 struct ProductDetailCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
+        ProductDetailCellChip<SelectedDetailProductData>(item: SelectedDetailProductData(imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3, attributes: [ResultAttribute(name: "Color ", valueName: "verde")]), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity}, getAttributes: {item in return item.attributes},onChipTapped: {} )
     }
 }
 

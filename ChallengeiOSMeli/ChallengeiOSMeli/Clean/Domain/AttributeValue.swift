@@ -9,9 +9,9 @@ import Foundation
 
 struct AttributeValue: Codable {
     let id: String?
-    let name: String
+    let name: String?
     let valueStruct: Struct?
-    let source: Int
+    let source: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, name
