@@ -8,7 +8,7 @@
 import Foundation
 
 struct Response: Codable {
-    let siteID: SiteID
+    let siteID: String
     let countryDefaultTimeZone: String
     let query: String
     let paging: Paging

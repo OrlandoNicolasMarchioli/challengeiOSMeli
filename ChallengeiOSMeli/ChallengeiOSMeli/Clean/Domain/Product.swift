@@ -15,7 +15,7 @@ struct Product: Codable, Identifiable {
     let listingTypeID: String
     let permalink: String
     let buyingMode: String
-    let siteID: SiteID
+    let siteID: String
     let categoryID: String
     let domainID: String
     let thumbnail: String
@@ -41,7 +41,7 @@ struct Product: Codable, Identifiable {
     let inventoryID: String?
     let variationID: String?
     let variationFilters: [String]?
-    let variationsData: [VariationsDatum]?
+    let variationsData: [String: VariationsDatum]?
     
     enum CodingKeys: String, CodingKey {
         case id, title, condition

@@ -35,10 +35,18 @@ struct AllProductsView: View {
                                         .foregroundColor(.yellow)
                                         .bold()
                                         .padding(.trailing)
-                                }
+                                }.padding()
                             }
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.yellow, lineWidth: 2) 
+                            )
+        
                         }
                         .frame(width: geometry.size.width)
+                        .padding(.top)
                         
                         if(!allProductsViewModel.state.noProductsFound
                         ){
