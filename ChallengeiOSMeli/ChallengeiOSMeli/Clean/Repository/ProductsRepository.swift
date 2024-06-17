@@ -52,21 +52,36 @@ func mapJSONToSelectedProductData(json: [String: Any?]) -> [SelectedProductData]
            let availableQuantity = result["available_quantity"] as? Int,
            let shipping = result["shipping"] as? [String: Any],
            let freeShipment = shipping["free_shipping"] as? Bool,
-           let id = result["id"] as? String {
+           let attributes = result["attributes"] as? [[String: Any]],
+           let seller = result["seller"] as? [String: Any],
+           let sellerName = seller["nickname"] as? String
+        {
+            
+            var attributeNames: [String] = []
+            
+            for attribute in attributes {
+                if let name = attribute["name"] as? String, let valueName = attribute["value_name"] as? String {
+                    attributeNames.append(name + ": " + valueName)
+                }
+            }
             
             let product = SelectedProductData(
-                id: id,
+                id: UUID().uuidString,
                 imageUrl: imageUrl,
                 productName: productName,
                 freeShipment: freeShipment,
                 productPrice: productPrice,
                 productOriginalPrice: productOriginalPrice,
-                availableQuantity: availableQuantity
+                availableQuantity: availableQuantity,
+                attributeNames: attributeNames,
+                sellerName: sellerName
+                
             )
             
             products.append(product)
         }
     }
     
+
     return products
 }
