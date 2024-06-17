@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ProductFetchUseCase{
-    func getProductsByName(productName: String) -> AnyPublisher<[Product], Error>
+    func getProductsByName(productName: String) -> AnyPublisher<[SelectedProductData], Error>
 }
 
 
@@ -21,7 +21,7 @@ class DefaultProductsFetchUseCase: ProductFetchUseCase{
         self.allProductsRepository = allProductsRepository
     }
     
-    func getProductsByName(productName: String) -> AnyPublisher<[Product], Error> {
+    func getProductsByName(productName: String) -> AnyPublisher<[SelectedProductData], Error> {
         return allProductsRepository.fetchProducts(productName: productName).map{result in
             return result
         }.mapError{err in
