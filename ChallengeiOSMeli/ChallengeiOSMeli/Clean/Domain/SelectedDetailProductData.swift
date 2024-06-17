@@ -13,4 +13,5 @@ struct SelectedDetailProductData{
     let productPrice: Double
     let productOriginalPrice: Double
     let availableQuantity: Int
+    let attributes: [ResultAttribute]
 }

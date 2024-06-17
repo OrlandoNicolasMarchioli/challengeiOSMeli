@@ -27,6 +27,7 @@ struct ProductDetailCellChip<T>: View {
     let getProductPrice: ((T) -> Double)
     let getProductOriginalPrice: ((T) -> Double?)
     let getAvailableQuantity: ((T) -> Int)
+    let getAttributes: ((T) -> [ResultAttribute])
     let onChipTapped: (() -> Void)
     
     var body: some View {
@@ -88,7 +89,15 @@ struct ProductDetailCellChip<T>: View {
                             .font(.subheadline)
                             .bold()
                     }
-                    
+                    Text("Caracteristicas del producto")
+                        .foregroundColor(Color.black)
+                        .font(.title3)
+                        .padding(.top, 10)
+                    ForEach(getAttributes(item), id: \.id) { attribute in
+                        Text("\(attribute.name): \(attribute.valueName)")
+                            .foregroundColor(Color.black)
+                            .font(.subheadline)
+                    }
                 }
             }
         }
