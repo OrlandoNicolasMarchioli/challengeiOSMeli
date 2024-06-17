@@ -15,4 +15,6 @@ struct SelectedProductData: Identifiable{
     let productPrice: Double
     let productOriginalPrice: Double
     let availableQuantity: Int
+    let attributeNames: [String]
+    let sellerName: String
 }

@@ -14,9 +14,9 @@ struct EmptySearchView: View {
                 Image(systemName: "magnifyingglass")
                     .resizable()
                     .frame(maxWidth: 200, maxHeight: 200)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color("yellowMeli"))
                 Text("Search your product")
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color("yellowMeli"))
                     .bold()
             }
         }
