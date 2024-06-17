@@ -40,7 +40,6 @@ class ProductApi: ProductsApiProtocol{
                     print("Invalid Url")
                     return
                 }
-        print(urlRequest)
         
         performDataTask(urlRequest: urlRequest , completion: completion)
 
@@ -76,7 +75,6 @@ class ProductApi: ProductsApiProtocol{
           var hostUrl = URL(string: host)
           hostUrl?.append(path: path)
           hostUrl?.append(queryItems: [URLQueryItem(name: "q", value: param)])
-          print(hostUrl ?? "")
           var urlRequest = URLRequest(url: hostUrl ?? URL(fileURLWithPath: ""))
           urlRequest.httpMethod = "GET"
           return  urlRequest
