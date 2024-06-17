@@ -28,6 +28,7 @@ class AllProductsViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     DispatchQueue.main.async {
+                        print(error.localizedDescription)
                         self?.state = (self?.state.clone(productsFetched: [], withErrorMessage: error.localizedDescription, withMessage: "", withHasError: true, withNoProductsFound: true))!
                     }
                 }
