@@ -54,13 +54,13 @@ struct AllProductsView: View {
                                 Grid(alignment: .center, horizontalSpacing: 16, verticalSpacing: 16) {
                                     ForEach(allProductsViewModel.state.products) { product in NavigationLink(destination: ProductDetailView())
                                         {
-                                            ProductCellChip<Product>(item: product,
-                                                                     getProductImageUrl: { item in item.thumbnail },
-                                                                     getProductName: { item in item.title }, getFreeShipment: {item in item.shipping.freeShipping}
+                                            ProductCellChip<SelectedProductData>(item: product,
+                                                                                 getProductImageUrl: { item in item.imageUrl },
+                                                                                 getProductName: { item in item.productName }, getFreeShipment: {item in item.freeShipment}
                                                                      ,
-                                                                     getProductPrice: { item in item.originalPrice!}
+                                                                                 getProductPrice: { item in item.productPrice}
                                                                      ,
-                                                                     getProductOriginalPrice: { item in item.price }
+                                                                                 getProductOriginalPrice: { item in item.productOriginalPrice  }
                                                                      ,
                                                                      getAvailableQuantity: { item in item.availableQuantity },
                                                                      onChipTapped: {

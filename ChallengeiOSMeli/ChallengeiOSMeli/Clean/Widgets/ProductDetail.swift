@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProductDetail: View {
-    @State var product: Product
+    @State var product: SelectedDetailProductData
     
     var body: some View {
         HStack{
@@ -24,8 +24,8 @@ struct ProductDetailCellChip<T>: View {
     let getProductImageUrl: ((T) -> String)
     let getProductName: ((T) -> String)
     let getFreeShipment: ((T) -> Bool)
-    let getProductPrice: ((T) -> Int)
-    let getProductOriginalPrice: ((T) -> Int?)
+    let getProductPrice: ((T) -> Double)
+    let getProductOriginalPrice: ((T) -> Double?)
     let getAvailableQuantity: ((T) -> Int)
     let onChipTapped: (() -> Void)
     
@@ -82,7 +82,8 @@ struct ProductDetailCellChip<T>: View {
                         .font(.title)
                         .padding(.bottom, 10)
                     if (getFreeShipment(item)) {
-                        Text(ShipmentType.freeSHipment.rawValue)
+                        //TODO: to replase with the value of the product
+                        Text("ShipmentType.freeSHipment.rawValue")
                             .foregroundColor(Color.green)
                             .font(.subheadline)
                             .bold()
@@ -108,7 +109,7 @@ private func convertToSecureURL(_ urlString: String) -> String {
 
 struct ProductDetailCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
+        ProductDetailCellChip<SelectedProductData>(item: SelectedProductData(id: "MLA1515207466", imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
     }
 }
 
