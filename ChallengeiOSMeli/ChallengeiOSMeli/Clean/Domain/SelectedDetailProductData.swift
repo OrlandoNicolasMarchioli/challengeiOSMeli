@@ -10,7 +10,9 @@ import Foundation
 struct SelectedDetailProductData{
     let imageUrl: String
     let productName: String
-    let productPrice: Int
-    let productOriginalPrice: Int
+    let productPrice: Double
+    let productOriginalPrice: Double
     let availableQuantity: Int
+    let attributeName: String
+    let attributeValueName: String
 }

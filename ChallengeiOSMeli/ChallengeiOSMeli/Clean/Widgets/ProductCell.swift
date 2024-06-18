@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProductCell: View {
-    @State var product: Product
+    @State var product: SelectedProductData
     
     var body: some View {
         HStack{
@@ -24,19 +24,19 @@ struct ProductCellChip<T>: View {
     let getProductImageUrl: ((T) -> String)
     let getProductName: ((T) -> String)
     let getFreeShipment: ((T) -> Bool)
-    let getProductPrice: ((T) -> Int)
-    let getProductOriginalPrice: ((T) -> Int?)
+    let getProductPrice: ((T) -> Double)
+    let getProductOriginalPrice: ((T) -> Double?)
     let getAvailableQuantity: ((T) -> Int)
     let onChipTapped: (() -> Void)
     
     var body: some View {
-        VStack {
+        VStack (alignment: .leading){
             HStack {
                 ZStack {
                     
                     Rectangle()
-                        .fill(Color("lightGray"))
-                        .frame(maxWidth: 200, maxHeight: 200)
+                        .fill(Color("backgroundImageGray"))
+                        .frame(maxWidth: 200, maxHeight: 220)
                         .cornerRadius(8)
                     
                     AsyncImage(url:  URL(string: convertToSecureURL(getProductImageUrl(item)))) { phase in
@@ -49,6 +49,7 @@ struct ProductCellChip<T>: View {
                             image
                                 .resizable()
                                 .scaledToFit()
+                                .frame(maxHeight: 200)
                                 .cornerRadius(8)
                         case .failure:
                             Image(systemName: "photo")
@@ -61,35 +62,37 @@ struct ProductCellChip<T>: View {
                         }
                     }
                 }
-                .padding()
+                .padding(.leading)
                 
                 VStack(alignment: .leading) {
                     Text(getProductName(item))
                         .foregroundColor(Color("grayTitle"))
                         .bold()
-                        .font(.title2)
+                        .font(.callout)
                         .padding(.bottom, 10)
-                    if let originalPrice = getProductOriginalPrice(item) {
-                        Text("Original: $\(originalPrice)")
+                    if (getProductOriginalPrice(item) != nil && getProductOriginalPrice(item) != getProductPrice(item)){
+                        Text(" $\(getProductOriginalPrice(item)!.formatted(.number.precision(.fractionLength(0...2))))")
                             .foregroundColor(Color("grayTitle"))
                             .strikethrough()
                             .font(.subheadline)
                     }
-                    Text("$\(getProductPrice(item))")
+                    Text("$\(getProductPrice(item).formatted(.number.precision(.fractionLength(0...2))))")
                         .foregroundColor(Color.black)
                         .bold()
                         .font(.title3)
                         .padding(.bottom, 10)
                     if (getFreeShipment(item)) {
-                        Text(ShipmentType.freeSHipment.rawValue)
+                        Text("Envio gratis")
                             .foregroundColor(Color.green)
                             .font(.subheadline)
                             .bold()
                     }
-                    Text("Available: \(getAvailableQuantity(item))")
+                    Text("Disponible: \(getAvailableQuantity(item))")
                         .foregroundColor(Color("grayTitle"))
                         .font(.subheadline)
-                }.padding()
+                    Spacer()
+                }.padding(.trailing)
+                
             }
         }
         .onTapGesture {
@@ -108,7 +111,7 @@ private func convertToSecureURL(_ urlString: String) -> String {
 
 struct ProductCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCellChip<SelectedProductData>(item: SelectedProductData(imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
+        ProductCellChip<SelectedProductData>(item: SelectedProductData(id: "MLA1515207466",imageUrl: "http://http2.mlstatic.com/D_947190-MLA73734741684_012024-I.jpg", productName: "Motorola G54 5G 16GB RAM", freeShipment: true, productPrice: 1200, productOriginalPrice: 1300, availableQuantity: 3, attributeNames: ["Screen"], sellerName: "Mercado Libre"), getProductImageUrl: {item in return item.imageUrl}, getProductName: {item in return item.productName}, getFreeShipment: {item in return item.freeShipment}, getProductPrice: {item in return item.productPrice}, getProductOriginalPrice: {item in return item.productOriginalPrice}, getAvailableQuantity: {item in return item.availableQuantity},onChipTapped: {} )
     }
 }
 

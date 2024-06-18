@@ -32,7 +32,7 @@ struct AllProductsView: View {
                                     Image(systemName: "magnifyingglass")
                                         .resizable()
                                         .frame(width: 25, height: 25)
-                                        .foregroundColor(.yellow)
+                                        .foregroundColor(Color("yellowMeli"))
                                         .bold()
                                         .padding(.trailing)
                                 }.padding()
@@ -41,7 +41,7 @@ struct AllProductsView: View {
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.yellow, lineWidth: 2) 
+                                    .stroke(Color("yellowMeli"), lineWidth: 2) 
                             )
         
                         }
@@ -51,16 +51,16 @@ struct AllProductsView: View {
                         if(!allProductsViewModel.state.noProductsFound
                         ){
                             ScrollView {
-                                Grid(alignment: .center, horizontalSpacing: 16, verticalSpacing: 16) {
-                                    ForEach(allProductsViewModel.state.products) { product in NavigationLink(destination: ProductDetailView())
+                                Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 16) {
+                                    ForEach(allProductsViewModel.state.products) { product in NavigationLink(destination: ProductDetailView(product: product))
                                         {
-                                            ProductCellChip<Product>(item: product,
-                                                                     getProductImageUrl: { item in item.thumbnail },
-                                                                     getProductName: { item in item.title }, getFreeShipment: {item in item.shipping.freeShipping}
+                                            ProductCellChip<SelectedProductData>(item: product,
+                                                                                 getProductImageUrl: { item in item.imageUrl },
+                                                                                 getProductName: { item in item.productName }, getFreeShipment: {item in item.freeShipment}
                                                                      ,
-                                                                     getProductPrice: { item in item.originalPrice!}
+                                                                                 getProductPrice: { item in item.productPrice}
                                                                      ,
-                                                                     getProductOriginalPrice: { item in item.price }
+                                                                                 getProductOriginalPrice: { item in item.productOriginalPrice  }
                                                                      ,
                                                                      getAvailableQuantity: { item in item.availableQuantity },
                                                                      onChipTapped: {
