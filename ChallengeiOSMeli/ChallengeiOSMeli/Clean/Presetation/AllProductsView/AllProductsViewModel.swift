@@ -28,13 +28,18 @@ class AllProductsViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     DispatchQueue.main.async {
+                        print(error.localizedDescription)
                         self?.state = (self?.state.clone(productsFetched: [], withErrorMessage: error.localizedDescription, withMessage: "", withHasError: true, withNoProductsFound: true))!
                     }
                 }
             },
                   receiveValue: {
                 products in DispatchQueue.main.async{
-                    self.state = self.state.clone(productsFetched: products)
+                    if(products.isEmpty){
+                        self.state = self.state.clone(withNoProductsFound: true)
+                    }else{
+                        self.state = self.state.clone(productsFetched: products)
+                    }
                 }
             })
             .store(in: &cancellables)

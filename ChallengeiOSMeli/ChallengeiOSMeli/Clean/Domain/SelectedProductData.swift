@@ -7,11 +7,14 @@
 
 import Foundation
 
-struct SelectedProductData{
+struct SelectedProductData: Identifiable{
+    let id: String
     let imageUrl: String
     let productName: String
     let freeShipment: Bool
-    let productPrice: Int
-    let productOriginalPrice: Int
+    let productPrice: Double
+    let productOriginalPrice: Double
     let availableQuantity: Int
+    let attributeNames: [String]
+    let sellerName: String
 }

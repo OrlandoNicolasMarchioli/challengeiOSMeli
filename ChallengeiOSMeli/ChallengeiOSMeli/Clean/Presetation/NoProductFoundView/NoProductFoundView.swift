@@ -14,9 +14,9 @@ struct NoProductFoundView: View {
                 Image(systemName: "message")
                     .resizable()
                     .frame(maxWidth: 200, maxHeight: 200)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color("yellowMeli"))
                 Text("No products found")
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color("yellowMeli"))
                     .bold()
             }
         }
